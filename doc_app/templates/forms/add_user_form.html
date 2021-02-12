@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <form action="#" method="post">
+        {% csrf_token %}
+        {{ form.login.label }}<br>
+        {{ form.login }}<br>
+        {{ form.login.errors }}<br>
+        {{ form.password.label }}<br>
+        {{ form.password }}<br>
+        {{ form.password.errors }}<br>
+        {{ form.repeatPassword.label }}<br>
+        {{ form.repeatPassword }}<br>
+        {{ form.repeatPassword.errors }}<br>
+        {{ form.first_name.label }}<br>
+        {{ form.first_name }}<br>
+        {{ form.first_name.errors }}<br>
+        {{ form.last_name.label }}<br>
+        {{ form.last_name }}<br>
+        {{ form.last_name.errors }}<br>
+        {{ form.email.label }}<br>
+        {{ form.email }}<br>
+        {{ form.email.errors }}<br>
+        <input type="submit" value="Save">
+    </form>
+{% endblock %}

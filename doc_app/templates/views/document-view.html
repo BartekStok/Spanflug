@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <br>
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Document</th>
+                <th>Description</th>
+                <th>Created at</th>
+                <th>Attributes</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ document.id }}</td>
+                <td>{{ document.name }}</td>
+                <td>{{ document.description }}</td>
+                <td>{{ document.created_at }}</td>
+                <td>
+                    {% for attribute in document.attributes_set.all %}
+                        <p>{{ attribute.key }}</p>
+                        <p>{{ attribute.value }}</p>
+                    {% endfor %}
+                </td>
+                <td>
+                    <a href="{% url 'add-attributes' %}">Add attributes</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <form action="#" method="post">
+        {% csrf_token %}
+        {{ form.key.label }}<br>
+        {{ form.key }}<br>
+        {{ form.key.errors }}<br>
+        {{ form.value.label }}<br>
+        {{ form.value }}<br>
+        {{ form.value.errors }}<br>
+        <input type="submit" value="Save">
+    </form>
+{% endblock %}

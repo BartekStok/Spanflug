@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div>
+        <a href="{% url 'add-document' %}">Add document</a>
+    </div>
+    <br>
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Document</th>
+                <th>Description</th>
+                <th>Created at</th>
+                <th>Attributes</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for document in documents %}
+                <tr>
+                    <td>{{ document.id }}</td>
+                    <td><a href="/document-view/{{ document.id }}">{{ document.name }}</a></td>
+                    <td>{{ document.description }}</td>
+                    <td>{{ document.created_at }}</td>
+                    <td>
+                        {% for attribute in document.attributes_set.all %}
+                            <p>{{ attribute.key }}</p>
+                            <p>{{ attribute.value }}</p>
+                        {% endfor %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}
